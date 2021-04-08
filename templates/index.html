@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <style>
+        label{
+            font-size: 18px;
+            font-weight: 400;
+        }
+    </style>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sports Quiz</title>
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+</head>
+
+<body>
+    <form action="/submitresponse" method="post" class="w3-padding w3-margin w3-card w3-display-middle">
+        {% csrf_token %}
+        <p>
+        <label for="name">Enter your name</label>
+        <input class="w3-input" type="text" name="name" id="name" placeholder="Enter Name" required>
+        </p>
+        {% for i in questions %}
+
+        <h2>{{i.question}}</h2>
+
+        <p>
+            <input type="radio" name="{{i.id}}" id="option1" value="{{i.option1}}" required>
+            <label for="option1">{{i.option1}}</label>
+        </p>
+        <p>
+            <input type="radio" name="{{i.id}}" id="option2" value="{{i.option2}}" required>
+            <label for="option2">{{i.option2}}</label>
+        </p>
+        <p>
+            <input type="radio" name="{{i.id}}" id="option3" value="{{i.option3}}" required>
+            <label for="option3">{{i.option3}}</label>
+        </p>
+        <p>
+            <input type="radio" name="{{i.id}}" id="option4" value="{{i.option4}}" required>
+            <label for="option4">{{i.option4}}</label>
+        </p>
+
+        {% endfor %}
+        <button type="submit" class="w3-btn w3-blue w3-shadow w3-right"> Submit Answer</button>
+    </form>
+
+</body>
+
+</html>
